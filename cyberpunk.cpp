@@ -5,15 +5,15 @@ using namespace std;
 int a;
 int x = 1; 					//Передвижение x
 int y = 1; 					//Передвижение y
-//int z = 0; 				//Передвижение по z
-int field[50][50]; 	//Игровое поле
-char input; 				//Переменная ввода
-int linesize = 50; 	//Размер линни отрисовки интерфейса
-char line[50]; //Строка и размер строки в интерфейсе
-int descsize = 30;		//Размер описания
-char desc[30];			//Описание местности
+//int z = 0; 					//Передвижение по z
+int field[50][50]; 				//Игровое поле
+char input; 					//Переменная ввода
+int linesize = 50; 				//Размер линни отрисовки интерфейса
+char line[50];					//Строка и размер строки в интерфейсе
+int descsize = 30;				//Размер описания
+char desc[30];					//Описание местности
 
-//Управление
+//Управление персонажем
 void control() {
 	cin >> input;
 		if(input == 'w')
@@ -47,7 +47,7 @@ void playerstop() {
 
 }
 
-//Параметры игрока на С
+//Параметры игрока на кнопку С
 void charlist() {
 
 	for(a = 0; a < linesize; a++) //Присваивание символа линии отрисовки
@@ -75,7 +75,7 @@ void interface() {
 			cout << line[a];
 
 	cout << endl;
-	cout << "[I] Inventory | [C] Character | [Q] Quit" << endl; //Открытие доп меню
+	cout << "[I] Inventory | [C] Character | [Q] Quit" << endl; //Клавиши доп меню
 	
 	if(input == 'i')
 		cout << "Your inventory is empty." << endl;
