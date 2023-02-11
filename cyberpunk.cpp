@@ -5,6 +5,8 @@ using namespace std;
 int a;
 int x = 1; 					//Передвижение x
 int y = 1; 					//Передвижение y
+int health = 100;				//Здоровье
+int experience = 0;				//Опыт
 //int z = 0; 					//Передвижение по z
 int field[50][50]; 				//Игровое поле
 char input; 					//Переменная ввода
