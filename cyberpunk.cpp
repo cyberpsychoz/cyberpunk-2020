@@ -1,10 +1,12 @@
 #include <iostream>
 #include <cstdlib>
+#include <vector>
+#include <string>
 using namespace std;
 
 int a;
-int x = 1; 					//Передвижение x
-int y = 1; 					//Передвижение y
+int x = 1; 						//Передвижение x
+int y = 1; 						//Передвижение y
 int health = 100;				//Здоровье
 int experience = 0;				//Опыт
 //int z = 0; 					//Передвижение по z
@@ -14,6 +16,49 @@ int linesize = 50; 				//Размер линни отрисовки интерф
 char line[50];					//Строка и размер строки в интерфейсе
 int descsize = 30;				//Размер описания
 char desc[30];					//Описание местности
+
+//Класс предмета
+class Item {
+    public:
+        std::string name;
+        int value;
+
+        Item(std::string name, int value) {
+            this->name = name;
+            this->value = value;
+        }
+};
+
+//Класс инвентаря
+class Inventory {
+    public:
+        std::vector<Item> items;
+
+        void addItem(Item item) {
+            items.push_back(item);
+        }
+
+        void removeItem(std::string name) {
+            for (int i = 0; i < items.size(); i++) {
+                if (items[i].name == name) {
+                    items.erase(items.begin() + i);
+                    break;
+                }
+            }
+        }
+
+        void displayInventory() {
+            std::cout << "Inventory: " << std::endl;
+            for (int i = 0; i < items.size(); i++) {
+                std::cout << items[i].name << " - " << items[i].value << std::endl;
+            }
+        }
+};
+
+//Костыль для отображения инвентаря
+void invdis(Inventory &inventory) {
+  inventory.displayInventory();
+}
 
 //Управление персонажем
 void control() {
@@ -80,7 +125,7 @@ void interface() {
 	cout << "[I] Inventory | [C] Character | [Q] Quit" << endl; //Клавиши доп меню
 	
 	if(input == 'i')
-		cout << "Your inventory is empty." << endl;
+		invdis(inventory);
 
 	if(input == 'c')
 		charlist();
