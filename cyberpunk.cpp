@@ -34,11 +34,11 @@ class Inventory {
     public:
         std::vector<Item> items;
 
-        void addItem(Item item) {
+        void addItem(Item item) {		//Добавление предмета в инвентарь
             items.push_back(item);
         }
 
-        void removeItem(std::string name) {
+        void removeItem(std::string name) {		//Удаление предмета из инвентаря
             for (int i = 0; i < items.size(); i++) {
                 if (items[i].name == name) {
                     items.erase(items.begin() + i);
@@ -47,18 +47,13 @@ class Inventory {
             }
         }
 
-        void displayInventory() {
+        void displayInventory() {		//Отображение инвентаря
             std::cout << "Inventory: " << std::endl;
             for (int i = 0; i < items.size(); i++) {
                 std::cout << items[i].name << " - " << items[i].value << std::endl;
             }
         }
 };
-
-//Костыль для отображения инвентаря
-void invdis(Inventory &inventory) {
-  inventory.displayInventory();
-}
 
 //Управление персонажем
 void control() {
@@ -113,8 +108,13 @@ void charlist() {
 }
 
 //Отрисовка интерфейса
-void interface() {
-
+void main_screen() {
+	
+	Inventory inventory;
+	inventory.addItem(Item("Cyberdeck", 1));
+    inventory.addItem(Item("Pistol_9mm", 1));
+    inventory.addItem(Item("9mm_ammo", 8));
+	
 	for(a = 0; a < linesize; a++) //Присваивание символа линии отрисовки
 			line[a] = '=';
 
@@ -125,7 +125,7 @@ void interface() {
 	cout << "[I] Inventory | [C] Character | [Q] Quit" << endl; //Клавиши доп меню
 	
 	if(input == 'i')
-		invdis(inventory);
+		inventory.displayInventory(); // Отрисовка инвентаря
 
 	if(input == 'c')
 		charlist();
@@ -139,10 +139,6 @@ void interface() {
 		cout << line[a];
 	
 	cout << endl <<"Description: " << endl;
-
-//	for(a = 0; a < descsize; a++) {
-//		cout << desc[a/2] << endl;
-//	}
 
 	for(a = 0; a < linesize; a++)
 		cout << line[a];
@@ -158,7 +154,7 @@ void screen_update() {
 		
 		playerstop();
 		cout << "CYBERPUNK 2020" << endl;
-		interface();
+		main_screen();
 //	text_update();
 		system("clear");
 		
@@ -173,6 +169,7 @@ void screen_update() {
 //}
 
 int main() {
+	cout << "Welcome to cyberpunk motherfucker!" << endl;
 	system("clear");
 	screen_update();
 return 0;
