@@ -5,8 +5,8 @@
 using namespace std;
 
 int a;
-int x = 1; 						//Передвижение x
-int y = 1; 						//Передвижение y
+int x = 1; 					//Передвижение x
+int y = 1; 					//Передвижение y
 int health = 100;				//Здоровье
 int experience = 0;				//Опыт
 //int z = 0; 					//Передвижение по z
@@ -112,8 +112,8 @@ void main_screen() {
 	
 	Inventory inventory;
 	inventory.addItem(Item("Cyberdeck", 1));
-    inventory.addItem(Item("Pistol_9mm", 1));
-    inventory.addItem(Item("9mm_ammo", 8));
+	inventory.addItem(Item("Pistol_9mm", 1));
+	inventory.addItem(Item("9mm_ammo", 8));
 	
 	for(a = 0; a < linesize; a++) //Присваивание символа линии отрисовки
 			line[a] = '=';
